@@ -2,6 +2,7 @@
 
 window.addEventListener("load", initApp);
 
+
 // ========== Global Variables ========== //
 
 const names = [
@@ -81,11 +82,74 @@ const teacher = {
 
 function initApp() {
     console.log("initApp: app.js is running 🎉");
+    loopThroughNames();
+    loopThroughYears();
+    loopThroughYTeachers();
+    displayData();
 }
 
 // ========== forEach ========== //
+function loopThroughNames() {
+  names.forEach(function(name, index) {
+    logName(name, index);
+  });
+}
 
+function logName(name, index) {
+    if (index === 0) {
+    console.log("First name in the array:", name);
+    }
+    if(index === names.length -1){
+        console.log("First name in the array:", name);
+    }
+    if(index % 2 === 1) {
+        console.log("Every second name in the array:", name);
+    }
+}
+
+function loopThroughYears(){
+    years.forEach(function(year, index) {
+        logYear(year, index);
+    });
+}
+
+function logYear(year, index) {
+    if (index === 0) {
+        console.log("First year in the array:", year);
+    }
+    if (index === year.length -1){
+        console.log("First year in the array:", year);
+    }
+    if (index % 2 === 1) {
+        console.log("Every second year in the array:", year);
+    }
+}
+
+function loopThroughYTeachers() {
+    teachers.forEach(function(teacher, index){
+        logTeacher(teacher, index);
+    });
+}
+
+function logTeacher(teacher, index) {
+    if (index === 0) {
+        console.log("First teacher in the array:", teacher);
+    }
+    if (index === teacher.length -1){
+        console.log("First teacher in the array:", teacher);
+    }
+    if (index % 2 === 1) {
+        console.log("Every second teacher in the array:", teacher);
+    }
+}
 // ========== for loop ========== //
+
+function forTeachers() {
+    for (let index = 0; index < years.length; index++) {
+        const year = years[index];
+        console.log(years);
+    }
+}
 
 // ========== for of loop ========== //
 
@@ -96,3 +160,34 @@ function initApp() {
 // ========== Filter items: array.filter(...) ========== //
 
 // ========== Sorting: array.sort() ========== //
+console.log(names);
+console.log(years);
+console.log(teacher);
+console.log(teachers);
+
+// ========== DOM Manipulation showing in a table the data ========== //
+
+// Function that displays the data in the table 
+function displayData() {
+    const tableBody = document.getElementById("data");
+    // Loops through each teacher object in the teachers array
+    teachers.forEach(function(teacher, index){
+        const row = document.createElement("tr");
+        const nameCol = document.createElement("td");
+        const yearCol = document.createElement("td");
+        const teacherCol = document.createElement("td");
+
+        // Sets text content for name, year, and teacher col
+        nameCol.textContent = names[index];
+        yearCol.textContent = years[index];
+        teacherCol.textContent = teacher.name;
+
+        // Appends the name, year and teacher col to row element
+        row.appendChild(nameCol);
+        row.appendChild(yearCol);
+        row.appendChild(teacherCol);
+
+        // Appends row element to tbody element
+        tableBody.appendChild(row);
+    });
+}
