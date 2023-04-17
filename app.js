@@ -86,6 +86,10 @@ function initApp() {
     loopThroughYears();
     loopThroughYTeachers();
     displayData();
+    forTeachers();
+    loopThroughFiveFirstYears();
+    loopThroughFiveLastYears();
+    logNumbers(); 
 }
 
 // ========== forEach ========== //
@@ -147,8 +151,57 @@ function logTeacher(teacher, index) {
 function forTeachers() {
     for (let index = 0; index < years.length; index++) {
         const year = years[index];
-        console.log(years);
+        console.log(`Year ${index}: ${year}`);
+
+        if(index === years.length -1){
+            console.log("This is the last year in the list:", year);
+        }
+
+        if (years[index]=== 2023) {
+            console.log("Current year:", year);
+        }
     }
+}
+
+function loopThroughFiveFirstYears() {
+    for (let index = 0; index < 5; index++ ) {
+        console.log(years[index]);
+    }
+}
+
+function loopThroughFiveLastYears() {
+    for (let index = years.length -5; index < years.length; index++) {
+        console.log(years[index]);
+    }
+}
+
+function logNumbers() {
+  // Fra 0 til 9
+  let numbers0Til9 = '';
+  for (let index = 0; index < 10; index++) {
+    numbers0Til9 += index + ' ';
+  }
+  console.log('Fra 0 til 9:', numbers0Til9);
+
+    // Fra 1 til 10
+    let numbers1Til10 = '';
+    for (let index = 1; index <= 10; index++) {
+        numbers1Til10 += index + ' ';
+    }
+    console.log('Fra 1 til 10:', numbers1Til10);
+
+    // Fra 10 til 0
+    let numbers10Til0 = '';
+    for (let index = 10; index >= 0; index--) {
+        if (index === 0) {
+            numbers10Til0 += 'liftoff';
+        } else {
+            numbers10Til0 += index + ' ';
+        }
+    }
+    console.log('10 til 0 liftoff:', numbers10Til0);
+
+
 }
 
 // ========== for of loop ========== //
